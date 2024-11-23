@@ -5,7 +5,7 @@ import cors from "cors"
 
 const app = express() // express se ek app bnata h
 app.use(cors({
-    origin: "*",
+    origin: process.env.CORS_ORIGIN,
     credentials: true
 }))
 
@@ -14,14 +14,13 @@ app.use(express.urlencoded({extended: true, limit: "16kb"})) //when data comes f
 app.use(express.static("public")) //if i want to store files and folder in my server
 app.use(cookieParser()) 
 
-// routes
-
+// routes , we have to import routes here itself and not at top
 import userRouter from "./routes/user.route.js"
-// routes declaration
+// routes declaration  
+app.use("/api/v3/users", userRouter) //userRouter is the route which we are bringing and /user is prefix
 
-app.use("/api/v1/users", userRouter)
 
-
+//http://localhost:8000/api/v3/users/register
 
 
 export {app}
