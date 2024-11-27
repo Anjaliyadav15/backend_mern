@@ -1,4 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary'; // giving temporary name to v2 as cloudinary
+import exp from 'constants';
 import fs from 'fs'; // file system module , when we have to manage file like change permission etc then we use it
 // we usually link and unlink files when we delete or remove file
 
@@ -30,3 +31,4 @@ const uploadOnCloudinary = async (localFilePath) => {
         return null;
     }
 }
+export {uploadOnCloudinary}
